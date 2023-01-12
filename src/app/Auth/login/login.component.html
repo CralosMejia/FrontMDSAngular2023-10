@@ -1,0 +1,36 @@
+<div class="contenedor">
+    <div class="col primera_columna">
+        <img src="../../../assets/Ilustrations/undraw_experience_design_re_dmqq.svg" alt="">
+    </div>
+    <div class="col container_form">
+        <div>
+            <h1>Welcome Back</h1>
+            <h5>Login your account</h5>
+            <form
+                (ngSubmit)="login()"
+                [formGroup]="loginForm"
+                autocomplete="off"
+            >
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Username</label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                    formControlName="username">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1"
+                    formControlName="password">
+                </div>
+                <div class="mb-3">
+                    <label  class="form-label">Currency</label>
+                    <select class="form-select" >
+                        <option value="USD" selected>USD</option>
+                        <option value="EUR" >EUR</option>
+                        <option value="JPY " >JPY</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Login</button>
+            </form>
+        </div>
+    </div>
+</div>

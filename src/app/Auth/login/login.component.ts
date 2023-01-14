@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder,FormGroup,Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/Services/login.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -32,9 +33,12 @@ export class LoginComponent implements OnInit {
       const username=this.loginForm.controls['username'].value
       const password=this.loginForm.controls['password'].value
 
-      this.loginSRV.login(username,password).subscribe(resp=>{
-        console.log(resp);
-        this.router.navigate(['/mainPage'],{queryParams: {username}});
+      this.loginSRV.login(username,password).subscribe((resp:any)=>{
+        if(resp.length !== 0){
+          this.router.navigate(['/mainPage'],{queryParams: {username}});
+        }else{
+          Swal.fire('No existe un usuario registrado con esas credenciales.')
+        }
       });
 
     }

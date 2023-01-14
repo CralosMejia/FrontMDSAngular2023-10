@@ -34,11 +34,9 @@ export class LoginComponent implements OnInit {
       const password=this.loginForm.controls['password'].value
 
       this.loginSRV.login(username,password).subscribe((resp:any)=>{
-        if(resp.length !== 0){
-          this.router.navigate(['/mainPage'],{queryParams: {username}});
-        }else{
-          Swal.fire('No existe un usuario registrado con esas credenciales.')
-        }
+        this.router.navigate(['/mainPage'],{queryParams: {username}});
+      },error=>{
+        Swal.fire('No existe un usuario registrado con esas credenciales.')
       });
 
     }

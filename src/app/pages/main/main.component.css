@@ -1,0 +1,10 @@
+.contenedor{
+  width: 50vw;
+  flex-direction: column;
+}
+
+.fila{
+  height: 50vh;
+}
+
+

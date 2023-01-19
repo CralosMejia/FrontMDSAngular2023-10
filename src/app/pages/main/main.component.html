@@ -1,2 +1,41 @@
-<h1>Welcome {{username}}</h1>
-<button (click)="logout() " class="btn btn-danger">Logout</button>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid d-flex justify-content-between">
+    <div>
+      <h2>{{userName}}</h2>
+    </div>
+    <div>
+      <button (click)="logout() " class="btn btn-danger">Logout</button>
+      <button (click)="activateCreatedForm() " class="btn btn-success" *ngIf="rol==='USER'">Crear Aplicacion</button>
+    </div>
+  </div>
+</nav>
+<div class="row d-flex justify-content-center fila" *ngIf="isCreatedAplication">
+  <div class="container contenedor">
+    <h2>Crear Aplicación</h2>
+    <form (ngSubmit)="crearAplicacion()" [formGroup]="aplicacionForm" autocomplete="off">
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Nombre</label>
+        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+          formControlName="nombre">
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Descripcion</label>
+        <input type="text" class="form-control" id="exampleInputPassword1" formControlName="descripcion">
+      </div>
+      <button type="submit" class="btn btn-primary">Crear</button>
+    </form>
+  </div>
+</div>
+<div class="row">
+  <h2>Aplicaciones del cliente</h2>
+</div>
+<div class="row d-flex justify-content-evenly">
+  <div class="card" style="width: 18rem;" *ngFor="let aplicacion of listaAplicaciones">
+    <div class="card-body">
+      <h5 class="card-title">{{aplicacion.nombre}}</h5>
+      <h6 class="card-subtitle mb-2 text-muted" *ngIf="rol==='ADMIN'">{{aplicacion.nombreUsuario}}</h6>
+      <p class="card-text">{{aplicacion.descripcion}}</p>
+    </div>
+  </div>
+
+</div>

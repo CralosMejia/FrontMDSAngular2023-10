@@ -1,0 +1,28 @@
+.colum-fecha-create-app{
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: flex-end
+}
+
+.info-general-fnp{
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.etiquetas{
+  color: rgb(58, 58, 245);
+  font-weight: bold;
+}
+
+.input-fecha-crear-app{
+  width: 10vw;
+}
+
+.input-row{
+  margin-bottom: 15px;
+}
+
+.inputs-fields{
+  margin-bottom: 30px;
+}

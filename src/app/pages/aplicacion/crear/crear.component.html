@@ -1,0 +1,208 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid d-flex justify-content-between">
+    <div>
+      <h2>{{userName}}</h2>
+    </div>
+    <div>
+      <h2>Crear Aplicacion</h2>
+    </div>
+    <div>
+      <button (click)="regresar() " class="btn btn-danger">Regresar</button>
+    </div>
+  </div>
+</nav>
+
+
+<div class="container">
+  <form [formGroup]="aplicacionForm"
+  (ngSubmit)="crearApp()">
+    <div class="row info-general-fnp">
+      <div class="col">
+        <h3>N° Poliza: {{nPoliza}}</h3>
+        <h3>N°: {{numApp}}</h3>
+      </div>
+      <div class="col colum-fecha-create-app">
+        <h3>Fecha:</h3>
+        <input type="date" class="form-control input-fecha-crear-app" formControlName="fecha">
+      </div>
+    </div>
+    <div class="row inputs-fields">
+      <div class="col">
+        <div class="input-row">
+          <label for="select-asegurado" class="form-label etiquetas">Asegurado</label>
+          <select class="form-select" id="select-asegurado" aria-label="Default select example"
+            formControlName="asegurado">
+            <option *ngFor="let user of usuariosSinAdminList" [value]="user.nombreUser">{{user.nombreUser}}</option>
+          </select>
+        </div>
+
+        <div class="input-row">
+          <label for="select-pagador" class="form-label etiquetas">Pagador</label>
+          <select class="form-select" id="select-pagador" aria-label="Default select example" formControlName="pagador">
+            <option *ngFor="let user of usuariosSinAdminList" [value]="user.nombreUser">{{user.nombreUser}}</option>
+          </select>
+        </div>
+
+        <div class="input-row">
+          <label for="select-tipo-transporte" class="form-label etiquetas">Tipo transporte</label>
+          <select class="form-select" id="select-tipo-transporte" aria-label="Default select example" formControlName="tipo_trasnporte">
+            <option *ngFor="let tipo of tipoTransporte" [value]="tipo">{{tipo}}</option>
+          </select>
+        </div>
+
+        <div class="input-row">
+          <label for="select-consignada-a" class="form-label etiquetas">Consignada a</label>
+          <select class="form-select" id="select-consignada-a" aria-label="Default select example" formControlName="consignada_a">
+            <option *ngFor="let user of usuariosSinAdminList" [value]="user.nombreUser">{{user.nombreUser}}</option>
+          </select>
+        </div>
+
+        <div class="input-row">
+          <label for="select-incoterms" class="form-label etiquetas">Incoterms</label>
+          <select class="form-select" id="select-incoterms" aria-label="Default select example" formControlName="incoterms">
+            <option *ngFor="let inco of incotemrsLista" [value]="inco">{{inco}}</option>
+          </select>
+        </div>
+
+        <div class="input-row">
+          <label for="select-items" class="form-label etiquetas">Items</label>
+          <select class="form-select" id="select-items" aria-label="Default select example" formControlName="items">
+            <option *ngFor="let item of itemsLista" [value]="item">{{item}}</option>
+          </select>
+        </div>
+
+        <div class="input-row">
+          <label for="input-number-bultos" class="form-label etiquetas">Bultos</label>
+          <input type="number" min="0" value="0" class="form-control" id="input-number-bultos" formControlName="bultos">
+        </div>
+
+      </div>
+      <div class="col">
+
+        <div class="input-row">
+          <label for="input-text-desde" class="form-label etiquetas">Desde</label>
+          <input type="text" class="form-control" id="input-text-desde" formControlName="desde">
+        </div>
+
+        <div class="input-row">
+          <label for="input-text-hasta" class="form-label etiquetas">Hasta</label>
+          <input type="text" class="form-control" id="input-text-hasta" formControlName="hasta">
+        </div>
+
+        <div class="input-row">
+          <label for="input-text-pertenece-a" class="form-label etiquetas">Pertenece a</label>
+          <input type="text" class="form-control" id="input-text-pertenece-a" formControlName="pertenece_a">
+        </div>
+
+        <div class="input-row">
+          <label for="input-text-embarcado-por" class="form-label etiquetas"> Embarcado por</label>
+          <input type="text" class="form-control" id="input-text-embarcado-por" formControlName="embarcado_por">
+        </div>
+
+        <div class="input-row">
+          <label for="input-text-nota-de-pedido" class="form-label etiquetas">Nota de pedido</label>
+          <input type="text" class="form-control" id="input-text-nota-de-pedido" formControlName="nota_de_pedido">
+        </div>
+
+        <div class="input-row">
+          <label for="input-text-marca" class="form-label etiquetas">Marca</label>
+          <input type="text" class="form-control" id="input-marca" formControlName="marca">
+        </div>
+
+        <div class="input-row">
+          <label for="input-number-monto-total" class="form-label etiquetas">Monto Total</label>
+          <input type="number" min="0" value="0" class="form-control" id="input-number-monto-total" formControlName="monto_total">
+        </div>
+
+      </div>
+      <div class="col">
+
+        <div class="input-row">
+          <label for="input-date-f-embarque" class="form-label etiquetas">Fecha de embarque</label>
+          <input type="date" class="form-control" id="input-date-f-embarque" formControlName="fecha_embarque">
+        </div>
+
+        <div class="input-row">
+          <label for="input-date-f-llegada" class="form-label etiquetas">Fecha de llegada</label>
+          <input type="date" class="form-control" id="input-date-f-llegada" formControlName="fecha_llegada">
+        </div>
+
+        <div class="input-row">
+          <label for="input-text-afianzador" class="form-label etiquetas">Afianzador</label>
+          <input type="text" class="form-control" id="input-text-afianzador" formControlName="afianzador">
+        </div>
+
+        <div class="input-row">
+          <label for="input-text-orden-compra" class="form-label etiquetas">Orden de compra</label>
+          <input type="text" class="form-control" id="input-text-orden-compra" formControlName="orden_compra">
+        </div>
+
+        <div class="input-row">
+          <label for="input-number-numero" class="form-label etiquetas">N°</label>
+          <input type="number" min="0" value="0" class="form-control" id="input-number-numero" formControlName="numero">
+        </div>
+
+        <div class="input-row">
+          <label for="input-number-peso-bruto" class="form-label etiquetas">Peso bruto</label>
+          <input type="number" min="0" value="0" class="form-control" id="input-number-peso-bruto" formControlName="peso_bruto">
+        </div>
+
+        <div class="input-row">
+          <label for="input-number-gastos-justificados" class="form-label etiquetas">% de gastos justificados</label>
+          <input type="number" min="0" value="0" class="form-control" id="input-number-gastos-justificados" formControlName="porcentaje_gasto_justificado">
+        </div>
+
+      </div>
+      <div class="col">
+
+        <div class="input-row">
+          <label for="suma-asegurada" class="form-label etiquetas">Suma Asegurada</label>
+          <input type="number" class="form-control" id="suma-asegurada" formControlName="suma_asegurada"/>
+        </div>
+
+        <div class="input-row">
+          <label for="tasa" class="form-label etiquetas">tasa</label>
+          <input type="number" class="form-control" id="tasa" formControlName="tasa" />
+        </div>
+
+        <div class="input-row">
+          <label for="valor-prima" class="form-label etiquetas">Valor prima</label>
+          <input type="number" class="form-control" id="tasa" formControlName="valor_prima"/>
+        </div>
+
+        <div class="input-row">
+          <label for="input-text-cobertura" class="form-label etiquetas">Cobertura</label>
+          <input type="text" class="form-control" id="input-text-cobertura" formControlName="cobertura">
+        </div>
+
+        <div class="input-row">
+          <label for="deducible" class="form-label etiquetas">Deducible</label>
+          <input type="number" class="form-control" id="tasa" formControlName="deducible">
+        </div>
+
+        <div class="input-row">
+          <label for="input-text-objeto-seguro" class="form-label etiquetas">Objeto del seguro</label>
+          <input type="text" class="form-control" id="input-text-objeto-seguro" formControlName="objeto_de_seguro">
+        </div>
+
+      </div>
+    </div>
+    <div class="row inputs-fields">
+      <div class="col">
+        <div class="input-row">
+          <label for="input-text-area-descripcion" class="form-label etiquetas">Descripción del contenido</label>
+          <textarea class="form-control" id="floatingTextarea" formControlName="descripcion_contenido"></textarea>
+        </div>
+      </div>
+      <div class="col">
+        <div class="input-row">
+          <label for="input-text-area-observaciones" class="form-label etiquetas">Observaciones</label>
+          <textarea class="form-control" id="floatingTextarea" formControlName="observaciones"></textarea>
+        </div>
+      </div>
+    </div>
+    <div class="row inputs-fields">
+      <button type="submit" class="btn btn-success">Guardar</button>
+    </div>
+  </form>
+</div>

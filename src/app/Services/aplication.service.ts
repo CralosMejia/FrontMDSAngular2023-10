@@ -18,11 +18,27 @@ export class AplicationService {
     return this.http.get(url);
   }
 
-  crearAplicacion(nombre:string, descripcion:string,userID:number ){
+  crearAplicacion(aplicacion:any ){
     const url=`${base_url}/Aplicacion`
-    return this.http.post(url,{
-      nombre,descripcion,userID
-    })
+    return this.http.post(url,aplicacion)
+  }
+
+  obtenerNumeroApp(idUser:number){
+    const url=`${base_url}/Aplicacion/numApp/${idUser}`
+
+    return this.http.get(url);
+  }
+
+  obtenerUsuariosSinAdmin(){
+    const url=`${base_url}/Usuarios/whitoutadmin`
+
+    return this.http.get(url);
+  }
+
+  obtenerAplicacion(appId){
+    const url=`${base_url}/Aplicacion/${appId}`
+
+    return this.http.get(url);
   }
 
 }

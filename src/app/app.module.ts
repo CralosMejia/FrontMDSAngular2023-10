@@ -7,12 +7,16 @@ import { LoginComponent } from './Auth/login/login.component';
 import { MainComponent } from './pages/main/main.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { CrearComponent } from './pages/aplicacion/crear/crear.component';
+import { VerComponent } from './pages/aplicacion/ver/ver.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    MainComponent
+    MainComponent,
+    CrearComponent,
+    VerComponent
   ],
   imports: [
     BrowserModule,

@@ -1,27 +1,30 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid d-flex justify-content-between">
-    <div>
-      <h2>{{userName}}</h2>
-    </div>
-    <div>
-      <button (click)="logout() " class="btn btn-danger">Logout</button>
-      <button (click)="activateCreatedForm() " class="btn btn-success" *ngIf="rol==='USER'">Crear Aplicacion</button>
-    </div>
-  </div>
-</nav>
-
-
 <div class="row">
-  <h2>Aplicaciones del cliente</h2>
+  <h2 *ngIf="rol !== 'Administrador'">Aplicaciones del cliente</h2>
+  <h2 *ngIf="rol == 'Administrador'">Usuarios</h2>
 </div>
-<div class="row d-flex justify-content-evenly">
+<div class="row d-flex justify-content-evenly" *ngIf="rol !== 'Administrador'">
   <div class="card" style="width: 18rem;" *ngFor="let aplicacion of listaAplicaciones">
     <div class="card-body">
       <h4 class="card-title">Numero Poliza {{aplicacion.numero_poliza}}</h4>
-      <h6 class="card-subtitle mb-2 text-muted" *ngIf="rol==='ADMIN'">{{aplicacion.nombreUsuario}}</h6>
+      <h6 class="card-subtitle mb-2 text-muted" *ngIf="rol==='Ejecutivo'">{{aplicacion.nombreUsuario}}</h6>
       <h6>Descripcion del contenido </h6>
       <p class="card-text">{{aplicacion.descripcion_contenido}}</p>
-      <button type="button" class="btn btn-primary" (click)="verAplicacion(aplicacion.aplicacionID)">ver</button>
+      <div class="container-btn-main-aplication">
+        <button type="button" class="btn btn-success btn-main-aplication" *ngIf="rol =='Ejecutivo'">Aprobar</button>
+        <button type="button" class="btn btn-danger btn-main-aplication" *ngIf="rol =='Ejecutivo'">Anular</button>
+        <button type="button" class="btn btn-primary btn-main-aplication"
+          (click)="verAplicacion(aplicacion.aplicacionID,aplicacion.nombreUsuario)">Ver</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="row d-flex justify-content-evenly" *ngIf="rol == 'Administrador'">
+  <div class="card" style="width: 18rem;" *ngFor="let user of listaUsuarios">
+    <div class="card-body">
+      <h4 class="card-title">Nombre: {{user.nombreUser}}</h4>
+      <h6 class="card-subtitle mb-2 text-muted">Rol: {{user.rol}} </h6>
     </div>
   </div>
 

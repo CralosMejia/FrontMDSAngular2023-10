@@ -55,9 +55,7 @@ export class CrearComponent implements OnInit {
     })
   }
 
-  regresar(){
-    this.router.navigate(['/mainPage'],{queryParams: {userName:this.userName,id_user:this.userID,rol:this.rol}});
-  }
+
 
   cargarFormulario(){
     this.aplicacionForm= this.fb.group({
@@ -102,9 +100,8 @@ export class CrearComponent implements OnInit {
   crearApp(){
     if(!this.aplicacionForm.invalid){
       this.aplicacionForm.controls['numero_aplicacion'].setValue(this.numApp);
-      console.log(this.aplicacionForm.value);
       this.appSrv.crearAplicacion(this.aplicacionForm.value).subscribe(resp =>{
-        this.router.navigate(['/mainPage'],{queryParams: {userName:this.userName,id_user:this.userID,rol:this.rol}});
+        this.router.navigate(['/dashboard/mainPage'],{queryParams: {userName:this.userName,id_user:this.userID,rol:this.rol}});
       })
     }else{
       Swal.fire('Llene todos los campos')

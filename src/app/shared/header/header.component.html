@@ -1,0 +1,92 @@
+<header class="topbar">
+  <nav class="navbar top-navbar navbar-expand-md navbar-light">
+    <!-- ============================================================== -->
+    <!-- Logo -->
+    <!-- ============================================================== -->
+    <div class="navbar-header">
+      <a class="navbar-brand" href="index.html">
+        <!-- Logo icon --><b>
+
+        </b> </a>
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Logo -->
+    <!-- ============================================================== -->
+    <div class="navbar-collapse">
+      <!-- ============================================================== -->
+      <!-- toggle and nav items -->
+      <!-- ============================================================== -->
+      <ul class="navbar-nav mr-auto">
+        <!-- This is  -->
+        <li class="nav-item"> <a class="nav-link nav-toggler hidden-md-up waves-effect waves-dark"
+            href="javascript:void(0)"><i class="ti-menu"></i></a> </li>
+        <li class="nav-item"> <a class="nav-link sidebartoggler hidden-sm-down waves-effect waves-dark"
+            href="javascript:void(0)"><i class="ti-menu"></i></a> </li>
+
+      </ul>
+      <h2>{{userName}}</h2>
+      <!-- ============================================================== -->
+      <!-- User profile and search -->
+      <!-- ============================================================== -->
+      <ul class="navbar-nav my-lg-0">
+
+        <li class="nav-item dropdown mega-dropdown"> <a class="nav-link dropdown-toggle waves-effect waves-dark" href=""
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="ti-search"></i></a>
+          <div class="dropdown-menu animated bounceInDown">
+            <ul class="mega-dropdown-menu row">
+              <li class="col-lg-3  m-b-30">
+                <h4 class="m-b-20">Filtrar</h4>
+                <!-- Contact -->
+                <form [formGroup]="busquedaForm" (ngSubmit)="buscar()">
+                  <div class="form-group form-group-filtros">
+                    <label for="exampleInputEmail1">Fecha: </label>
+                    <div class="col-sm-4  check-filtro">
+                      <div class="form-check">
+                        <label class="custom-control custom-radio">
+                          <input id="radio1" name="tipoFecha" type="radio" class="custom-control-input"
+                            formControlName="tipoFecha" value="1">
+                          <span class="custom-control-indicator"></span>
+                          <span class="custom-control-description">Embarque</span>
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <label class="custom-control custom-radio">
+                          <input id="radio2" name="tipoFecha" type="radio" class="custom-control-input"
+                            formControlName="tipoFecha" value="2">
+                          <span class="custom-control-indicator"></span>
+                          <span class="custom-control-description">llegada</span>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group form-group-filtros">
+                    <label for="exampleInputEmail1">Fecha incio: </label>
+                    <input type="date" class="form-control" id="exampleInputEmail1" formControlName="fechaIni">
+                  </div>
+                  <div class="form-group form-group-filtros">
+                    <label for="exampleInputEmail1">Fecha fin: </label>
+                    <input type="date" class="form-control" id="exampleInputEmail1" formControlName="fechaFin">
+                  </div>
+                  <div class="form-group form-group-filtros" *ngIf="rol =='Ejecutivo'">
+                    <label for="exampleInputEmail1">Cliente</label>
+                    <select class="form-select" id="select-asegurado" aria-label="Default select example"
+                      formControlName="cliente">
+                      <option *ngFor="let user of usuariosSinAdminList" [value]="user.nombreUser">{{user.nombreUser}}
+                      </option>
+                    </select>
+                  </div>
+                  <button type="submit" class="btn btn-info">Buscar</button>
+                </form>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <!-- ============================================================== -->
+        <!-- End mega menu -->
+        <!-- ============================================================== -->
+      </ul>
+    </div>
+  </nav>
+</header>
+<!-- ============================================================== -->
+<!-- End Topbar header -->

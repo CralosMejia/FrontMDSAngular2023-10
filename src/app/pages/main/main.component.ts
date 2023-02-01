@@ -17,6 +17,7 @@ export class MainComponent implements OnInit {
   public rol:string;
   public aplicacionForm: FormGroup;
   public listaAplicaciones:any;
+  public listaUsuarios:any;
 
   public isCreatedAplication:boolean = false;
   constructor(
@@ -42,20 +43,16 @@ export class MainComponent implements OnInit {
     });
 
     this.cargarAplicaciones();
+    this.cargarUsuarios();
+
+    this.aplicacionesSRV.getSearchParameter$().subscribe(resp=>{
+      this.listaAplicaciones= resp;
+    })
   }
 
 
   logout(){
     this.router.navigate(['/login'],{queryParams: {}});
-  }
-
-  activateCreatedForm(){
-    // if(this.isCreatedAplication){
-    //   this.isCreatedAplication= false
-    // }else{
-    //   this.isCreatedAplication=true;
-    // }
-    this.router.navigate(['/createApp'],{queryParams: {userName:this.userName,id_user:this.userID,rol:this.rol}});
   }
 
   cargarAplicaciones(){
@@ -64,8 +61,14 @@ export class MainComponent implements OnInit {
     });
   }
 
-  verAplicacion(appId){
-    this.router.navigate(['/verApp'],{queryParams: {userName:this.userName,id_user:this.userID,rol:this.rol,appId}});
+  cargarUsuarios(){
+    this.aplicacionesSRV.allUsers(this.userID).subscribe((resp:any)=>{
+      this.listaUsuarios = resp;
+    })
+  }
+
+  verAplicacion(appId,nomClien){
+    this.router.navigate(['/dashboard/verApp'],{queryParams: {userName:this.userName,id_user:this.userID,rol:this.rol,appId,nomClien}});
   }
 
 

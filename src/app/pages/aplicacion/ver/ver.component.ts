@@ -15,6 +15,7 @@ export class VerComponent implements OnInit {
   public rol:string;
   public appID:number;
   public aplicacion:any;
+  public NombreCliente:any;
 
   constructor(
     private router:Router,
@@ -34,16 +35,15 @@ export class VerComponent implements OnInit {
       this.userID = params['id_user'];
       this.rol = params['rol'];
       this.appID = params['appId'];
+      this.NombreCliente = params['nomClien'];
+
+
 
     })
 
     this.appSrv.obtenerAplicacion(this.appID).subscribe(resp =>{
       this.aplicacion= resp[0]
     })
-  }
-
-  regresar(){
-    this.router.navigate(['/mainPage'],{queryParams: {userName:this.userName,id_user:this.userID,rol:this.rol}});
   }
 
 }

@@ -1,0 +1,34 @@
+<div class="container_crear_usuario">
+  <form
+    [formGroup]="usuarioForm"
+    (ngSubmit)="crearUsuario()"
+  >
+    <div class="form-group row">
+      <label for="example-text-input" class="col-2 col-form-label">Username</label>
+      <div class="col-10">
+        <input class="form-control" type="text" id="example-text-input" formControlName="NombreUser">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="example-password-input" class="col-2 col-form-label">Password</label>
+      <div class="col-10">
+        <input class="form-control" type="password" id="example-password-input" formControlName="Password">
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="example-month-input" class="col-2 col-form-label">Rol</label>
+      <div class="col-10">
+          <select class="custom-select col-12" id="inlineFormCustomSelect" formControlName="rol">
+              <option selected="">Cliente</option>
+              <option value="Administrador">Administrador</option>
+              <option value="Ejecutivo">Ejecutivo</option>
+          </select>
+      </div>
+    </div>
+    <div class="row inputs-fields">
+      <button type="submit" class="btn btn-success">Crear</button>
+    </div>
+  </form>
+
+</div>

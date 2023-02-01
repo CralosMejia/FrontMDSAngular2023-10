@@ -22,4 +22,10 @@ export class LoginService {
 
     return this.http.get(url);
   }
+
+  crearUsuario(user:any,userId:number){
+    const url=`${base_url}/Usuarios/${userId}`
+    return this.http.post(url,user)
+  }
+
 }

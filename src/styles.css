@@ -45,3 +45,46 @@ body{
 .primera_columna img{
     width: 40vw;
 }
+
+
+.main-wrapper{
+  max-width: 100vw;
+  max-height:100vh ;
+  overflow: hidden;
+}
+
+.page-wrapper{
+  padding: 10px;
+  margin-top: 10vh;
+}
+
+.topbar{
+  width: 100vw;
+  position: fixed;
+}
+
+.left-sidebar{
+  position: fixed;
+  background-color: #242a33;
+}
+
+.cursor-class{
+  cursor: pointer;
+}
+
+li ul li a.cursor-class:hover{
+  color: #fff;
+}
+
+.container_crear_usuario{
+  margin-top: 10vh;
+  overflow: hidden;
+}
+
+.btn-main-aplication{
+  margin-left: 3px;
+}
+
+.container-btn-main-aplication{
+  display: flex;
+}

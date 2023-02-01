@@ -2,3 +2,14 @@
   justify-content: flex-end
 
 }
+
+.contenedor{
+  flex-direction: row;
+}
+
+
+@media (max-width: 650px) {
+  .primera_columna {
+    display: none;
+  }
+}

@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable, Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 const base_url=environment.url;
@@ -9,7 +10,13 @@ const base_url=environment.url;
 })
 export class AplicationService {
 
-  constructor(private http:HttpClient) { }
+
+  private searchParameter:any[];
+  private searchParameter$: Subject<any[]>;
+
+  constructor(private http:HttpClient) {
+    this.searchParameter$= new Subject();
+  }
 
 
   obtenerListaAplicaciones(idUser:number){
@@ -39,6 +46,27 @@ export class AplicationService {
     const url=`${base_url}/Aplicacion/${appId}`
 
     return this.http.get(url);
+  }
+
+  allUsers(userId:number){
+    const url=`${base_url}/Usuarios/${userId}`
+    return this.http.get(url)
+  }
+
+  allAppsParameters(fechaIni,fechaFin,tipoFecha,cliente,userID){
+    const url=`${base_url}/Aplicacion/appsbydate?fechaIni=${fechaIni}&fechaFin=${fechaFin}&tipoFecha=${tipoFecha}&cliente=${cliente}&userId=${userID}`
+    return this.http.get(url)
+  }
+
+
+  ///Comunicacion entre componentes
+  changeSearchParameter(search:any[]){
+    this.searchParameter = search;
+    this.searchParameter$.next(this.searchParameter);
+  }
+
+  getSearchParameter$():Observable<any[]>{
+    return this.searchParameter$.asObservable();
   }
 
 }

@@ -1,0 +1,23 @@
+<aside class="left-sidebar">
+  <!-- Sidebar scroll-->
+  <div class="scroll-sidebar">
+    <!-- Sidebar navigation-->
+    <nav class="sidebar-nav">
+      <ul id="sidebarnav">
+        <li class="user-profile">
+          <a class="has-arrow waves-effect waves-dark" aria-expanded="false">
+            <span class="hide-menu">Menu</span>
+          </a>
+          <ul aria-expanded="false" class="collapse">
+            <li><a (click)="regresar()" class="cursor-class">Inicio </a></li>
+            <li *ngIf="rol === 'Cliente'"><a (click)="crearNuevaApp()" class="cursor-class">Crear Nueva App</a></li>
+            <li *ngIf="rol === 'Administrador'"><a (click)="crearusuario()" class="cursor-class">Crear usuario</a></li>
+            <li><a (click)="logout()" class="cursor-class">Logout </a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <!-- End Sidebar navigation -->
+  </div>
+  <!-- End Sidebar scroll-->
+</aside>

@@ -1,3 +1,4 @@
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './Auth/login/login.component';
@@ -16,7 +17,10 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     PagesRoutingModule
   ],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers:[
+    { provide: LocationStrategy, useClass: HashLocationStrategy }
+  ]
 })
 export class AppRoutingModule {
 

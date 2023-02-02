@@ -16,7 +16,7 @@ export class PagesComponent implements OnInit {
 
     if(val === '1'){
       localStorage.setItem('validation','2')
-      // location.reload();
+      location.reload();
     }
 
 

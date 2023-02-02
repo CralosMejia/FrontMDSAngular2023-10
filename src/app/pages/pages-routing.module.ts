@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CrearComponent } from './aplicacion/crear/crear.component';
@@ -21,6 +21,9 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forChild(routes)
   ],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers:[
+    { provide: LocationStrategy, useClass: HashLocationStrategy }
+  ]
 })
 export class PagesRoutingModule { }
